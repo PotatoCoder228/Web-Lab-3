@@ -12,4 +12,8 @@ public class DataValidator implements ValidateData {
     public boolean validateR(double r) {
         return !(r < 1) && !(r > 4);
     }
+
+    public boolean validateData(Shot shot){
+        return validateX(shot.getX())&&validateY(shot.getY())&&validateR(shot.getR());
+    }
 }

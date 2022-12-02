@@ -6,4 +6,6 @@ public interface ValidateData {
     boolean validateY(double y);
 
     boolean validateR(double r);
+
+    boolean validateData(Shot shot);
 }

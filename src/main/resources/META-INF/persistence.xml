@@ -6,7 +6,7 @@
     <persistence-unit name="shots_db">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source>
-        <class>ru.itmo.potatocoder228.weblab3.DataEntity</class>
+        <class>ru.itmo.potatocoder228.weblab3.Shot</class>
         <properties>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
         </properties>
