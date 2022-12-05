@@ -12,7 +12,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-       xmlns:pf="http://primefaces.org/ui"
+      xmlns:pf="http://primefaces.org/ui"
 >
 
 <ui:composition template="WEB-INF/hat_template.xhtml">
@@ -79,31 +79,35 @@
                         </div>
                         <div class="r_page">
                             <div class="input-form__container input-form__container_buttons">
-                            <ul class="input-form__control input-form__button-list_r">
-                                <li class="input-form__button-list_r__item">
-                                    <h:commandButton styleClass="input-form__button input-form__button_r" id="r-button1"
-                                                     type="button" value="1" />
-                                </li>
-                                <li class="input-form__button-list_r__item">
-                                    <h:commandButton styleClass="input-form__button input-form__button_r" id="r-button2"
-                                                     type="button" value="2"/>
-                                </li>
-                                <li class="input-form__button-list_r__item">
-                                    <h:commandButton styleClass="input-form__button input-form__button_r" id="r-button3"
-                                                     type="button" value="3"/>
-                                </li>
-                                <li class="input-form__button-list_r__item">
-                                    <h:commandButton styleClass="input-form__button input-form__button_r" id="r-button4"
-                                                     type="button" value="4"/>
-                                </li>
-                            </ul>
+                                <ul class="input-form__control input-form__button-list_r">
+                                    <li class="input-form__button-list_r__item">
+                                        <h:commandButton styleClass="input-form__button input-form__button_r"
+                                                         id="r-button1"
+                                                         type="button" value="1"/>
+                                    </li>
+                                    <li class="input-form__button-list_r__item">
+                                        <h:commandButton styleClass="input-form__button input-form__button_r"
+                                                         id="r-button2"
+                                                         type="button" value="2"/>
+                                    </li>
+                                    <li class="input-form__button-list_r__item">
+                                        <h:commandButton styleClass="input-form__button input-form__button_r"
+                                                         id="r-button3"
+                                                         type="button" value="3"/>
+                                    </li>
+                                    <li class="input-form__button-list_r__item">
+                                        <h:commandButton styleClass="input-form__button input-form__button_r"
+                                                         id="r-button4"
+                                                         type="button" value="4"/>
+                                    </li>
+                                </ul>
                                 <h:panelGroup styleClass="input-form__hidden_r">
                                     <h:inputHidden value="#{dataBean.shot.r}">
                                         <f:validateRequired/>
                                         <f:validateLongRange minimum="1" maximum="4"/>
                                     </h:inputHidden>
-                        </h:panelGroup>
-                        </div>
+                                </h:panelGroup>
+                            </div>
                         </div>
 
                         <div id="table" class="input-form__control-buttons__container">

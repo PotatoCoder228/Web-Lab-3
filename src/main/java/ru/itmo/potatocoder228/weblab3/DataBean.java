@@ -15,14 +15,21 @@ import static java.lang.System.out;
 @ApplicationScoped
 public class DataBean implements Serializable {
     public static final String persistenceUnit = "shots_db";
-
+    private final DataValidator validator = new DataValidator();
     private Shot shot;
     private List<Shot> shots;
-    private final DataValidator validator = new DataValidator();
-
     private EntityManagerFactory entityManagerFactory;
     private EntityManager entityManager;
     private EntityTransaction transaction;
+    private double rMin = 0.25;
+    private double rMax = 4;
+
+    public DataBean() {
+        shot = new Shot();
+        shots = new ArrayList<>();
+
+        connection();
+    }
 
     public double getrMin() {
         return rMin;
@@ -38,16 +45,6 @@ public class DataBean implements Serializable {
 
     public void setrMax(double rMax) {
         this.rMax = rMax;
-    }
-
-    private double rMin = 0.25;
-    private double rMax = 4;
-
-    public DataBean() {
-        shot = new Shot();
-        shots = new ArrayList<>();
-
-        connection();
     }
 
     private void connection() {
@@ -93,7 +90,7 @@ public class DataBean implements Serializable {
             Map<String, String> paramMap = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
             transaction.begin();
             shot.setX(Double.parseDouble(paramMap.get("x")));
-            shot.setY(Double.parseDouble(paramMap.get("y").replace(',', '.')));
+            shot.setY(Double.parseDouble(paramMap.get("y")));
             shot.setR(Double.parseDouble(paramMap.get("r")));
             out.println(paramMap.get("x"));
             out.println(paramMap.get("y"));

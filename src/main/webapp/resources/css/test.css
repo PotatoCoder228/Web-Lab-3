@@ -145,67 +145,65 @@
     table-layout: auto;
 }
 
-.result_table{
+.result_table {
     width: 100%;
 }
-.itmo_logo{
+
+.itmo_logo {
     display: block;
     margin-left: auto;
     margin-right: auto
 }
-.logo{
+
+.logo {
     margin-top: 10px;
     display: block;
     margin-left: auto;
     margin-right: auto
 }
 
-.reset-button, .submit-button{
+.reset-button, .submit-button {
     margin: 20px;
 }
 
-.input-form__control-buttons__container{
+.input-form__control-buttons__container {
     margin-top: 30px;
 }
 
-.input-x, .input-y, .input-r{
+.input-x, .input-y, .input-r {
     margin-bottom: 10px;
 }
 
-.input-x{
+.input-x {
     width: 70px;
     text-align: right;
 }
 
-.graph-image{
+.graph-image {
     text-align: center;
 }
 
 
-
-
-
 .content-section_graph {
-  position: relative;
-  margin-bottom: 20px;
+    position: relative;
+    margin-bottom: 20px;
 }
 
 .result-graph_container {
-  position: relative;
-  text-align: center;
-  min-height: 220px;
+    position: relative;
+    text-align: center;
+    min-height: 220px;
 }
 
 .graph-canvas {
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
 }
 
 
-
-.visually-hidden, .index-menu{
+.visually-hidden, .index-menu {
     text-align: center;
 }
 
@@ -213,15 +211,16 @@
     background: rgb(215, 213, 216);
 }
 
-.index-menu-button-to-main{
+.index-menu-button-to-main {
     height: 50px;
     width: 200px;
     background: rgb(0, 0, 255, 0.4);
 }
 
-.datetime{
+.datetime {
     text-align: center;
 }
-.slider{
+
+.slider {
     margin: 5%;
 }

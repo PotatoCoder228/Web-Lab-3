@@ -72,6 +72,7 @@ $(function () {
         let headers = $(".result_table th");
 
         $(".result_table tr").each(function (index) {
+            console.log("Дошёл сюда");
             let cells = $(this).find("td");
             rows[index] = {};
             cells.each(function (cellIndex) {
@@ -126,10 +127,9 @@ $(function () {
 
     canvasCurrent.on('click', function (event) {
         if (!validateR()) return
-        xval = canvasCurrent.get
-        console.log(xval.value);
         let canvasX = (event.offsetX - canvasCurrent.width() / 2) / canone * rval;
         xval = canvasX;
+        console.log(xval.value);
         let minDiff = Infinity;
         let nearestX;
 
@@ -142,9 +142,6 @@ $(function () {
 
         let canvasY = (-event.offsetY + canvasCurrent.height() / 2) / canone * rval;
         yval = canvasY;
-
-
-        console.log(isAreaHit(xval, yval, rval));
         /*if (canvasY < Y_MIN) {
           canvasY = Y_MIN;
         } else if (canvasY > Y_MAX) {
@@ -158,10 +155,10 @@ $(function () {
         xSelect.prop('selected', true);
 
         $('.input-form__select_x option').not(xSelect).prop('selected', false);
-        $('.input-form__text_y').val(canvasY.toString().substring(0, 10));
+        $('.input-y').val(canvasY.toString().substring(0, 10));
 
         /*$('.input-form__control-buttons__button_submit').click();*/
-        addPoint([{name: 'x', value: canvasX}, {name: 'y', value: canvasY}, {name: 'r', value: rval}]).then(() => {
+        addPoint([{name: 'x', value: xval}, {name: 'y', value: yval}, {name: 'r', value: rval}]).then(() => {
             clearCanvasPoints();
             loadTablePoints();
         });
@@ -169,7 +166,7 @@ $(function () {
 
     $('.input-form__select_x').on('change', event => redrawCurrentFromInput());
 
-    $('.input-form__text_y').on('input', event => redrawCurrentFromInput());
+    $('.input-y').on('input', event => redrawCurrentFromInput());
 
     $('.input-form__button_r').on('click', function (event) {
         rval = $(this).val();
@@ -207,27 +204,27 @@ $(function () {
     clearCanvasPoints();
     loadTablePoints();
 
-  function isAreaHit(x, y, r) {
-    // alert("x="+x+" y="+y+" r="+r)
-    /*console.log("BIG: " + isBigEllipseHit(x, y, r))
-    console.log("SMALL: " + areSmallEllipsesHit(x, y, r))*/
-    return isBigEllipseHit(x, y, r) && !areSmallEllipsesHit(x, y, r)
-  }
+    function isAreaHit(x, y, r) {
+        // alert("x="+x+" y="+y+" r="+r)
+        /*console.log("BIG: " + isBigEllipseHit(x, y, r))
+        console.log("SMALL: " + areSmallEllipsesHit(x, y, r))*/
+        return isBigEllipseHit(x, y, r) && !areSmallEllipsesHit(x, y, r)
+    }
 
-  function isBigEllipseHit(x, y, r) {
-    const XR = r
-    const YR = r / 2
-    /*console.log("X: " + x  + ", Y: " + y + ", x^2/R^2: " + (x * x) / (XR * XR) + ", y^2/R^2 " + (y * y) / (YR * YR))*/
-    return (x * x) / (XR * XR) + (y * y) / (YR * YR) <= 1
-  }
+    function isBigEllipseHit(x, y, r) {
+        const XR = r
+        const YR = r / 2
+        /*console.log("X: " + x  + ", Y: " + y + ", x^2/R^2: " + (x * x) / (XR * XR) + ", y^2/R^2 " + (y * y) / (YR * YR))*/
+        return (x * x) / (XR * XR) + (y * y) / (YR * YR) <= 1
+    }
 
-  function areSmallEllipsesHit(x, y, r) {
-    x = Math.abs(x)
-    const XR = r
-    const YR = r / 2
-    return (x - XR / 4) * (x - XR / 4) / (XR * 0.15 * XR * 0.15) + (y - YR) * (y - YR) / (YR * 0.8 * YR * 0.8) <= 1 ||
-        (x) * (x) / (XR * 0.1 * XR * 0.1) + (y - YR) * (y - YR) / (YR * 0.3 * YR * 0.3) <= 1 ||
-        (x - XR / 9) * (x - XR / 9) / (XR / 9 * XR / 9) + (y + YR) * (y + YR) / (YR * 0.6 * YR * 0.6) <= 1 ||
-        (x - XR / 3.2) * (x - XR / 3.2) / (XR / 9 * XR / 9) + (y + YR) * (y + YR) / (YR * 0.8 * YR * 0.8) <= 1
-  }
+    function areSmallEllipsesHit(x, y, r) {
+        x = Math.abs(x)
+        const XR = r
+        const YR = r / 2
+        return (x - XR / 4) * (x - XR / 4) / (XR * 0.15 * XR * 0.15) + (y - YR) * (y - YR) / (YR * 0.8 * YR * 0.8) <= 1 ||
+            (x) * (x) / (XR * 0.1 * XR * 0.1) + (y - YR) * (y - YR) / (YR * 0.3 * YR * 0.3) <= 1 ||
+            (x - XR / 9) * (x - XR / 9) / (XR / 9 * XR / 9) + (y + YR) * (y + YR) / (YR * 0.6 * YR * 0.6) <= 1 ||
+            (x - XR / 3.2) * (x - XR / 3.2) / (XR / 9 * XR / 9) + (y + YR) * (y + YR) / (YR * 0.8 * YR * 0.8) <= 1
+    }
 });
