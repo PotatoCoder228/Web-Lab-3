@@ -30,7 +30,6 @@ $(function () {
 
     function validateY() {
         yval = $('.input-y').val();
-        yval = yval.replace(",", ".");
         if (isNumeric(yval) && yval >= Y_MIN && yval <= Y_MAX) {
             info.text('Введите координаты точки')
             return true;
@@ -190,8 +189,9 @@ $(function () {
     });
 
 
-    $('.input-form__control-buttons__button_submit').on('click', function (event) {
-        //event.preventDefault();
+    $('.submit_button').on('click', function (event) {
+        console.log("Жмякнул");
+        yval = yval.replace(",", ".");
         if (!validateForm()) {
             event.preventDefault();
         } else {
