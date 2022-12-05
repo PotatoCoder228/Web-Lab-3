@@ -218,3 +218,10 @@
     width: 200px;
     background: rgb(0, 0, 255, 0.4);
 }
+
+.datetime{
+    text-align: center;
+}
+.slider{
+    margin: 5%;
+}

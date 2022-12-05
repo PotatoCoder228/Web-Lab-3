@@ -1,6 +1,5 @@
 package ru.itmo.potatocoder228.weblab3;
 
-import javax.annotation.ManagedBean;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Model;
 import javax.faces.context.FacesContext;
@@ -9,6 +8,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import static java.lang.System.out;
 
 @Model
 @ApplicationScoped
@@ -23,7 +24,26 @@ public class DataBean implements Serializable {
     private EntityManager entityManager;
     private EntityTransaction transaction;
 
-    public DataBean(){
+    public double getrMin() {
+        return rMin;
+    }
+
+    public void setrMin(double rMin) {
+        this.rMin = rMin;
+    }
+
+    public double getrMax() {
+        return rMax;
+    }
+
+    public void setrMax(double rMax) {
+        this.rMax = rMax;
+    }
+
+    private double rMin = 0.25;
+    private double rMax = 4;
+
+    public DataBean() {
         shot = new Shot();
         shots = new ArrayList<>();
 
@@ -49,18 +69,15 @@ public class DataBean implements Serializable {
             throw exception;
         }
     }
+
     public void addShot() {
         try {
             transaction.begin();
-            if(validator.validateData(shot)) {
-                shot.checkHit();
-                entityManager.persist(shot);
-                shots.add(shot);
-                shot = new Shot();
-                transaction.commit();
-            }else{
-                throw new RuntimeException();
-            }
+            shot.checkHit();
+            entityManager.persist(shot);
+            shots.add(shot);
+            shot = new Shot();
+            transaction.commit();
         } catch (RuntimeException exception) {
             if (transaction.isActive()) {
                 transaction.rollback();
@@ -69,35 +86,32 @@ public class DataBean implements Serializable {
         }
     }
 
-    public void addShotWithParameters(){
-        System.out.println("Данные получены!");
-        if(shot==null) shot=new Shot();
+    public void addShotWithParameters() {
+        out.println("Данные получены!");
+        if (shot == null) shot = new Shot();
         try {
             Map<String, String> paramMap = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
             transaction.begin();
             shot.setX(Double.parseDouble(paramMap.get("x")));
-            shot.setY(Double.parseDouble(paramMap.get("y")));
+            shot.setY(Double.parseDouble(paramMap.get("y").replace(',', '.')));
             shot.setR(Double.parseDouble(paramMap.get("r")));
-            System.out.println(paramMap.get("x"));
-            System.out.println(paramMap.get("y"));
-            System.out.println(paramMap.get("r"));
-            if(validator.validateData(shot)) {
-                shot.checkHit();
-                entityManager.persist(shot);
-                shots.add(shot);
-                shot = new Shot();
-                transaction.commit();
-            }else{
-                throw new RuntimeException();
-            }
+            out.println(paramMap.get("x"));
+            out.println(paramMap.get("y"));
+            out.println(paramMap.get("r"));
+            shot.checkHit();
+            entityManager.persist(shot);
+            shots.add(shot);
+            shot = new Shot();
+            transaction.commit();
         } catch (RuntimeException exception) {
-            System.out.println("Ошибка:" + exception.getMessage());
+            out.println("Ошибка:" + exception.getMessage());
             if (transaction.isActive()) {
                 transaction.rollback();
             }
             throw exception;
         }
     }
+
     public String clearShots() {
         try {
             transaction.begin();
