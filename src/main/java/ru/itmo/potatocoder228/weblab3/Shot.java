@@ -14,9 +14,13 @@ public class Shot implements Serializable {
     @Column(name = "id", nullable = false)
     private Integer id;
 
+    @Column(name = "x", nullable = false)
     private Double x;
+    @Column(name = "y", nullable = false)
     private Double y;
+    @Column(name = "r", nullable = false)
     private Double r;
+    @Column(name = "hitResult", nullable = false)
     private Boolean hitResult;
 
     //Обязательный пустой конструктор

@@ -1,0 +1,220 @@
+.validate_button {
+    margin-top: 5%;
+}
+
+.boots:after {
+    content: '🤡';
+}
+
+/*
+тута
+*/
+
+.boots {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    text-align: center;
+    color: black;
+    font-family: "Agency FB";
+}
+
+.graphic {
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.columns {
+    display: table;
+    width: 100%;
+    min-width: 20px;
+    box-sizing: border-box;
+    margin: 0;
+    table-layout: fixed;
+    overflow: scroll;
+}
+
+/*
+тута
+*/
+.columns > div {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    display: table-cell;
+    vertical-align: top;
+    text-align: center;
+    width: 10%;
+    box-sizing: border-box;
+}
+
+/*
+тута
+*/
+.result-table__column {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    display: table-cell;
+    vertical-align: top;
+    text-align: center;
+    overflow: scroll;
+    word-break: break-all;
+    box-sizing: content-box;
+    table-layout: fixed;
+    max-height: 20px;
+    font-family: "Agency FB";
+}
+
+.table_column:hover {
+    background: rgb(239, 223, 255);
+}
+
+.result-table__column_x,
+.result-table__column_y,
+.result-table__column_R {
+    table-layout: fixed;
+    width: 25%;
+    min-width: 50px;
+    font-family: "Agency FB";
+    background: rgb(67, 108, 100);
+}
+
+.result-table__column_hit, #column_time, #run_time {
+    font-family: "Agency FB";
+    width: auto;
+    min-width: 30%;
+    background: rgb(67, 108, 100);
+}
+
+.descr {
+    margin-left: 3px;
+    font-family: "Agency FB";
+    text-align: left;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.result_table_container {
+    margin-top: 0;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 100%;
+    table-layout: fixed;
+}
+
+#right_column:hover,
+.header:hover,
+#left_column:hover,
+.boots:hover,
+#center_column:hover {
+    background-color: rgb(215, 213, 216);
+}
+
+.column_name:hover {
+    background: rgb(236, 224, 255);
+}
+
+.column_name {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+::placeholder {
+    text-align: center;
+}
+
+.right_column {
+    margin-left: 0;
+    margin-right: 0;
+    position: fixed;
+}
+
+.y_page, .x_page, .r_page {
+    margin-left: 3px;
+    text-align: left;
+}
+
+#center_column {
+    width: 5%;
+}
+
+#hit, #time, #running, #hit_1, #time_1, #run_time_1 {
+    font-family: "Agency FB";
+    width: auto;
+    min-width: 30%;
+}
+
+
+.results {
+    display: table;
+    table-layout: auto;
+}
+
+.result_table{
+    width: 100%;
+}
+.itmo_logo{
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+.logo{
+    margin-top: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.reset-button, .submit-button{
+    margin: 20px;
+}
+
+.input-form__control-buttons__container{
+    margin-top: 30px;
+}
+
+.input-x, .input-y, .input-r{
+    margin-bottom: 10px;
+}
+
+.input-x{
+    width: 70px;
+    text-align: right;
+}
+
+.graph-image{
+    text-align: center;
+}
+
+
+
+
+
+.content-section_graph {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.result-graph_container {
+  position: relative;
+  text-align: center;
+  min-height: 220px;
+}
+
+.graph-canvas {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+
+
+.visually-hidden, .index-menu{
+    text-align: center;
+}
+
+.visually-hidden:hover {
+    background: rgb(215, 213, 216);
+}
+
+.index-menu-button-to-main{
+    height: 50px;
+    width: 200px;
+    background: rgb(0, 0, 255, 0.4);
+}

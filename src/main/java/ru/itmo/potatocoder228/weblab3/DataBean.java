@@ -2,6 +2,7 @@ package ru.itmo.potatocoder228.weblab3;
 
 import javax.annotation.ManagedBean;
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.inject.Model;
 import javax.faces.context.FacesContext;
 import javax.persistence.*;
 import java.io.Serializable;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-@ManagedBean
+@Model
 @ApplicationScoped
 public class DataBean implements Serializable {
     public static final String persistenceUnit = "shots_db";
@@ -35,7 +36,7 @@ public class DataBean implements Serializable {
         transaction = entityManager.getTransaction();
     }
 
-    private void loadEntries() {
+    private void loadShots() {
         try {
             transaction.begin();
             Query query = entityManager.createQuery("SELECT e FROM Shot e");
@@ -48,7 +49,7 @@ public class DataBean implements Serializable {
             throw exception;
         }
     }
-    public void addEntry() {
+    public void addShot() {
         try {
             transaction.begin();
             if(validator.validateData(shot)) {
@@ -68,7 +69,7 @@ public class DataBean implements Serializable {
         }
     }
 
-    public void addEntryWithParameters(){
+    public void addShotWithParameters(){
         System.out.println("Данные получены!");
         if(shot==null) shot=new Shot();
         try {
@@ -97,7 +98,7 @@ public class DataBean implements Serializable {
             throw exception;
         }
     }
-    public String clearEntries() {
+    public String clearShots() {
         try {
             transaction.begin();
             Query query = entityManager.createQuery("DELETE FROM Shot ");
@@ -117,15 +118,15 @@ public class DataBean implements Serializable {
         return shot;
     }
 
-    public void setEntry(Shot shot) {
+    public void setShot(Shot shot) {
         this.shot = shot;
     }
 
-    public List<Shot> getEntries() {
+    public List<Shot> getShots() {
         return shots;
     }
 
-    public void setEntries(List<Shot> shots) {
+    public void setShots(List<Shot> shots) {
         this.shots = shots;
     }
 }
